@@ -36,10 +36,11 @@ public class UsersServiceImpl implements UsersService {
 
 	@Override
 	public String updateUser(Users user) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		if (userExists(user.getUsername())) {
 			Users userInDb = repo.findById(user.getUsername()).get();
 			userInDb.setUsername(user.getUsername());
-			userInDb.setPassword(user.getPassword());
+			userInDb.setPassword(passwordEncoder.encode(user.getPassword()));
 			userInDb.setEnabled(user.getEnabled());
 			userInDb.setRole(user.getRole());
 			repo.save(userInDb);
