@@ -32,9 +32,19 @@ public class UsersRest {
         return usersService.updateUser(user);
     }
 
-    @PostMapping(Constants.CREATE_URL)
-    public String createUser(@RequestBody Users user) {
-        return usersService.addUser(user);
+    @PostMapping(Constants.CREATE_BASE+Constants._TRAINEE)
+    public String createTrainee(@RequestBody Users user) {
+        return usersService.addUser(user, Constants._TRAINEE);
+    }
+    
+    @PostMapping(Constants.CREATE_BASE+Constants._TRAINER)
+    public String createTrainer(@RequestBody Users user) {
+        return usersService.addUser(user, Constants._TRAINER);
+    }
+    
+    @PostMapping(Constants.CREATE_BASE+Constants._TRAINING_MANAGER)
+    public String createTrainingManager(@RequestBody Users user) {
+        return usersService.addUser(user, Constants._TRAINING_MANAGER);
     }
 
 }

@@ -4,7 +4,7 @@ import com.qa.repository.domain.Users;
 
 public interface UsersService {
 
-	String addUser(Users user);
+	String addUser(Users user, String role);
 
     String deleteUser(String username);
 

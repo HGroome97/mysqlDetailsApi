@@ -18,9 +18,10 @@ public class UsersServiceImpl implements UsersService {
 	private UsersRepository repo;
 
 	@Override
-	public String addUser(Users user) {
+	public String addUser(Users user, String role) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setRole(role);
 		repo.save(user);
 		return user.toString();
 	}
